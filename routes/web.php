@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TodoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
+});
+
+// Category routes
+Route::prefix('categories')->name('categories.')->group(function (){
+
+});
+
+//Todos routes
+Route::prefix('todos')->name('todos.')->group(function (){
+
 });
