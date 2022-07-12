@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Arash Madadi">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>TODO project(Main Page)</title>
+    <title>TODO project</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('/Todo-project/css/mainPage.css')}}" rel="stylesheet">
