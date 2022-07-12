@@ -9,7 +9,6 @@ class CategoryController extends Controller
 {
     public function show()
     {
-        $result = Category::all()->toArray();
-        return view('main',['result'=>$result]);
+
     }
 }

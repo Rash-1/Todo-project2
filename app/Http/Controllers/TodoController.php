@@ -9,6 +9,6 @@ class TodoController extends Controller
 {
     public function show()
     {
-        return dd(Todo::all()->toArray());
+
     }
 }
