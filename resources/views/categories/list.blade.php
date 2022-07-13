@@ -24,7 +24,7 @@
                         {{$category->name}}
                     </td>
                     <td>
-                        <a class="btn btn-warning" href="#">Edit</a>
+                        <a class="btn btn-warning" href="{{route('categories.edit',['category'=>$category])}}">Edit</a>
                     </td>
                     <td>
                         <form action="{{route('categories.delete',['category'=>$category])}}" method="post">

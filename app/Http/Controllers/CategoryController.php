@@ -28,7 +28,8 @@ class CategoryController extends Controller
         $request->session()->flash('massage','Category Creation failed');
         return redirect()->route('categories.list');
     }
-    public function delete(Category $category){
+    public function delete(Category $category)
+    {
         $result = $category->delete();
         if ($result){
             request()->session()->flash('massage','Category deleted Successfully');
@@ -37,5 +38,22 @@ class CategoryController extends Controller
         request()->session()->flash('massage','Category deletion failed');
         return redirect()->route('categories.list');
 
+    }
+    public function edit(Category $category)
+    {
+        return view('categories/edit',['category'=>$category]);
+    }
+    public function update(CategoryRequest $request,Category $category)
+    {
+        $valid_data = $request->validated();
+        $result = $category->update([
+            'name'=>$valid_data['name']
+        ]);
+        if ($result){
+            request()->session()->flash('massage','Category updated Successfully');
+            return redirect()->route('categories.list');
+        }
+        request()->session()->flash('massage','Category edition failed');
+        return redirect()->route('categories.list');
     }
 }
