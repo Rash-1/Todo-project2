@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Todo;
 
 class CategoryController extends Controller
 {
@@ -12,6 +13,16 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
         return view('categories/list',['result'=>$categories]);
+    }
+    public function showTodos(Category $category)
+    {
+
+        $todos = Todo::query()->where('category','=',$category->name)->get();
+        if (empty($todos->toArray()))
+        {
+            $todos = 'No Todos Found For This Category!!!';
+        }
+        return view('todos.list',['todos'=>$todos]);
     }
     public function create()
     {
@@ -30,6 +41,7 @@ class CategoryController extends Controller
     }
     public function delete(Category $category)
     {
+        $todos = Todo::query()->where('category','=',$category->name)->delete();
         $result = $category->delete();
         if ($result){
             request()->session()->flash('massage','Category deleted Successfully');
@@ -50,7 +62,7 @@ class CategoryController extends Controller
             'name'=>$valid_data['name']
         ]);
         if ($result){
-            request()->session()->flash('massage','Category updated Successfully');
+            request()->session()->flash('massage','Category Edited Successfully');
             return redirect()->route('categories.list');
         }
         request()->session()->flash('massage','Category edition failed');
