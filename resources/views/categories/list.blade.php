@@ -1,5 +1,6 @@
 @extends('layoutes.main')
 @section('content')
+    <h2 class="text-center text-primary">Categories List</h2>
     @if(session()->has('massage'))
        <div class="text-center text-white bg-success mb-2 border rounded-3">
            {{session('massage')}}
@@ -10,8 +11,9 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
-                <th scope="col">Delete</th>
                 <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Todos</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +34,9 @@
                             @method('delete')
                             <input type="submit" value="Delete" class="btn btn-danger">
                         </form>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="{{route('categories.showTodos',['category'=>$category])}}">Show Todos</a>
                     </td>
                 </tr>
             @endforeach

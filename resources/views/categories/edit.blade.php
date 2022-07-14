@@ -21,6 +21,6 @@
             <label for="name">Name:</label>
             <input  type="text" class="form-control" id="name" value="{{$category->name}}" placeholder="Enter Category Name" name="name">
         </div>
-        <button type="submit" class="btn btn-primary">Edite</button>
+        <button type="submit" class="btn btn-primary">Edit</button>
     </form>
 @endsection
