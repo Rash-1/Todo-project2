@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +20,7 @@ class TodoFactory extends Factory
         return [
             'title' => $this->faker->sentence('4'),
             'description' => $this->faker->paragraph('5'),
-            'category' => $this->faker->text('9')
+            'category' => $this->faker->randomElement(Category::all()->pluck('name')->toArray())
         ];
     }
 }

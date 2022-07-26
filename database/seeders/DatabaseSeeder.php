@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Todo;
+use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -22,7 +23,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
-            TodoSeeder::class
+            CategorySeeder::class,
+             TodoSeeder::class,
         ]);
     }
 }
