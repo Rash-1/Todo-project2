@@ -36,7 +36,6 @@
                     <option value="{{$category->name}}">{{$category->id}} : {{$category->name}}</option>
                 @endforeach
                 <option value="New Category">0 : New Category</option>
-                <option value="default">00 : Default</option>
             </select>
         </div>
         <div class="mb-3 mt-3">

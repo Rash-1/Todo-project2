@@ -51,7 +51,6 @@ class TodoController extends Controller
             $category = 'default';
             if (Category::query()->where('name','==','default')->count() != 0 )
             {
-                dd(Category::query()->where('name','==','default')->count() );
                 Category::create([
                     'name'=>'default'
                 ]);
@@ -84,7 +83,7 @@ class TodoController extends Controller
     }
     public function edit(Todo $todo)
     {
-        $categories = Category::all();
+        $categories = Category::query()->where('name','!=','default')->get();
         return view('todos.edit',['todo'=>$todo,'categories'=>$categories]);
     }
     public function update(Todo $todo,TodoRequest $request)
@@ -95,6 +94,9 @@ class TodoController extends Controller
         {
             Category::create(['name'=>$valid_date['newCategory']]);
             $newCategory = $valid_date['newCategory'];
+        }elseif ($request->category == null && $request->newCategory == null)
+        {
+            $newCategory = $request->currentCategory;
         }else
         {
             $newCategory = $valid_date['category'];
