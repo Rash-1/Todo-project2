@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->enum('status',['done','not done'])->default('not done');
             $table->timestamp('checked_at')->nullable();
-            $table->string('category')->nullable();
+            $table->string('category');
             $table->timestamps();
         });
     }

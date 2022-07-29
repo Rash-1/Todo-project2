@@ -28,7 +28,6 @@ class TodoRequest extends FormRequest
             'title'=>'required|min:3|max:30',
             'description'=>'min:3',
             'newCategory'=>[Rule::requiredIf(request()->category == 'New Category'),'unique:App\Models\Category,name'],
-            'category'=>'required'
         ];
     }
 }

@@ -33,7 +33,7 @@ class TodoController extends Controller
     }
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::query()->where('name','!=','default')->get();
         return view('todos.create',['categories'=>$categories]);
     }
     public function store(TodoRequest $request)
@@ -46,6 +46,16 @@ class TodoController extends Controller
                 'name' => $request->newCategory
             ]);
             $category = $request->newCategory;
+        }elseif ($request->category == null)
+        {
+            $category = 'default';
+            if (Category::query()->where('name','==','default')->count() != 0 )
+            {
+                dd(Category::query()->where('name','==','default')->count() );
+                Category::create([
+                    'name'=>'default'
+                ]);
+            }
         }else
         {
             $category = $request->category;
